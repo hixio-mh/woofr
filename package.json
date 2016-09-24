@@ -1,0 +1,28 @@
+{
+  "name": "cordova.spa",
+  "version": "1.0.0",
+  "description": "minimal mobile SPA+rest interface in vanillajs for cordova",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.15.2"
+  },
+  "devDependencies": {
+    "compression": "^1.6.2",
+    "document-register-element": "^1.1.1",
+    "express": "^4.14.0",
+    "fastclick": "^1.0.6",
+    "minify": "^2.0.11",
+    "restglue": "^1.0.8"
+  },
+  "scripts": {
+    "build": "npm run builddev ; cd html/js; cp app.min.js /tmp/. && minify /tmp/app.min.js > app.min.js",
+    "builddev": "set -x; cd html/css; find -L $(pwd) -type f -name '*.css' | grep -v app.css | xargs cat > app.css; cd ../js && find -L $(pwd) -type f -name '*.js' | grep -v app.min.js | xargs cat > app.min.js",
+    "buildmonitor": "npm run-script builddev && npm start",
+    "start": "node app.js",
+    "monitor": "nodemon -i html/css/app.css -e html,js,css -i html/js/app.min.js -w html --exec 'npm run-script buildmonitor'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "https://github.com/coderofsalvation/cordova.spa.git",
+  "author": "",
+  "license": "ISC"
+}
