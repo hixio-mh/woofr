@@ -19,6 +19,7 @@ if (cluster.isMaster) {
 
 } else {
 
+  let manifest   = require('cache-manifest-generator');
   let compress   = require('compression')
   //minify     = require('minify')
   let express    = require("express")
@@ -36,11 +37,11 @@ if (cluster.isMaster) {
   app.use(bodyParser.urlencoded({ extended: true }));   // for parsing application/x-www-form-urlencoded
 
   // SPA routing
-  app.use(function(req, res, next) {
-    if ( req.url != "/" && req.url.match(/(\/$|\.html$|\.js|\.css|\.ttf|\.png|\.gif|\.jpg|\.woff)/) == null )
-      req.url = "/index.html"
-    next()
-  })
+  //app.use(function(req, res, next) {
+  //  if ( req.url != "/" && req.url.match(/(\/$|\.html$|\.js|\.css|\.ttf|\.png|\.gif|\.jpg|\.woff)/) == null )
+  //    req.url = "/index.html"
+  //  next()
+  //})
 
   // CORS
   app.use(function(req, res, next) {
@@ -70,12 +71,24 @@ if (cluster.isMaster) {
       }
   })  
 
-  app.use(function(req,  res,  next) {
-    next()
-  })
+  /*
+   * Offline storage
+   * Set Cache-Control: no-cache on all files served during development
+   */
+  if( process.env.NODE_ENV == "production" ){
+    app.use(function(req, res, next) {
+      res.set('Cache-Control', 'no-cache')
+      next()
+    })
+  }
+
+  app.get('/cache.manifest', manifest([
+      { file: 'public', url: '/', ignore: /.*swp$/ }
+    ])
+  )
 
   // middleware stack: try static files
-  app.use(express.static(__dirname + "/html"))
+  app.use(express.static(__dirname + "/public"))
 
 
   console.log(`listening on ${ip}:${port}`)

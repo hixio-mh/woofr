@@ -12,21 +12,16 @@
         -->
         <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *"/>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes">
         <meta name="format-detection" content="telephone=no"/>
         <meta name="msapplication-tap-highlight" content="no"/>
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
-        <link rel="stylesheet" type="text/css" href="css/app.css"/>
+        <link rel="stylesheet" type="text/css" href="dist/woofr.css"/>
+        <link rel="stylesheet" type="text/css" href="index.css"/>
         <title>Your app</title>
     </head>
     <body>
-        <div class="splash" style="display:none">
-          <h1>Apache Cordova</h1>
-          <div id="deviceready" class="blink">
-              <p class="event listening">Connecting to Device</p>
-              <p class="event received">Device is Ready</p>
-          </div>
-          <br>
-        </div>
         <div id="app">
           <div id="header">
             <img class="pull-left" src="img/logo.png" style="height:57px"></img>
@@ -35,21 +30,27 @@
           </div>  
           <div class="clear page wide">
             <br><br>
-            <x-input-string placeholder="foo@hotmail.com" type="text" title="email" id="foo1"></x-input-string>
-            <x-input-string placeholder="foo@hotmail.com" type="text" title="email2" id="foo2"></x-input-string>
-            <button id="test">test</button>
+            <x-foo data-value="(waiting for REST-response)" data-id="foo"></x-foo>
+            <button id="rest">do REST-request</button><br>
+            <button id="input">input text</button><br>
+            <button id="update">force update</button>
           </div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/app.min.js"></script>
+        <script type="text/javascript" src="dist/woofr.min.js"></script>
+        <script type="text/javascript" src="index.js"></script>
 
-        <!-- templates --> 
+        <!-- webcomponents --> 
 
-        <template id="x-input-string">
-          <b class="inputlabel"></b>
-          <input type="text" autocorrect="off" title="" placeholder="" class="form-control"></input>
-          <span class="highlight"></span>
-          <span class="input-bar"></span>
+        <template id="x-foo">
+           <h1>&lt;x-foo&gt;</h1>
+           <div style="text-align:center">
+             data-value: &nbsp;
+             <span class="foo"></b>
+           </div>
+           <br><br>
         </template>
+        <script type="text/javascript" src="x-foo.js"></script>
+
     </body>
 </html>
