@@ -58,4 +58,5 @@ Should work from android 2 and onwards.
 ## Tested on:
 
 * Chrome 45
+* Android galaxy S5
 * Android 2.3.6
