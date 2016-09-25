@@ -1,11 +1,11 @@
 {
- "version": "1.0.0",
+ "version": "1.0.1",
   "description": "minimal mobile SPA+rest interface in vanillajs for cordova",
   "main": "app.js",
   "dependencies": {
-    "body-parser": "^1.15.2"
   },
   "devDependencies": {
+    "body-parser": "^1.15.2",
     "appcache-nanny": "^1.1.0",
     "cache-manifest-generator": "^0.7.0",
     "compression": "^1.6.2",
