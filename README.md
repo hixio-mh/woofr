@@ -1,9 +1,9 @@
 Lightweight library which easifies development of offline-capable tablet/mobile webapps which:
 
-<img src="https://raw.githubusercontent.com/coderofsalvation/woofr/master/doc/woofr1.png" width="25%" style="width:25%"/>
-<img src="https://raw.githubusercontent.com/coderofsalvation/woofr/master/doc/woofr2.png" width="25%" style="width:25%"/>
-<img src="https://raw.githubusercontent.com/coderofsalvation/woofr/master/doc/woofr3.png" width="25%" style="width:25%"/>
-<img src="https://raw.githubusercontent.com/coderofsalvation/woofr/master/doc/woofr4.png" width="25%" style="width:25%"/>
+<img src="https://raw.githubusercontent.com/coderofsalvation/woofr/master/doc/woofr1.png" width="23%" style="width:23%"/>
+<img src="https://raw.githubusercontent.com/coderofsalvation/woofr/master/doc/woofr2.png" width="23%" style="width:23%"/>
+<img src="https://raw.githubusercontent.com/coderofsalvation/woofr/master/doc/woofr3.png" width="23%" style="width:23%"/>
+<img src="https://raw.githubusercontent.com/coderofsalvation/woofr/master/doc/woofr4.png" width="23%" style="width:23%"/>
 
 ## Usage 
 
