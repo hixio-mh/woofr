@@ -25,6 +25,9 @@ var woofr = {
     initialize: function(opts) {
       this.opts = opts
       this.bindEvents();
+      // Check for touchscreen, and if so, remap "click" to "touchstart"
+      woofr.HASTOUCH =  (typeof document.body.ontouchstart !== "undefined") ? true : false
+      woofr.CLICK = woofr.HASTOUCH ? "touchstart" : "click"
     },
     
     dispatchEvent: function(eventName, data){ // android < 5 compatible events
@@ -56,9 +59,6 @@ var woofr = {
     // deviceready Event Handler
     onDeviceReady: function() {
       $(document).ready(function(){
-        // Check for touchscreen, and if so, remap "click" to "touchstart"
-        this.HASTOUCH =  (typeof document.body.ontouchstart !== "undefined") ? true : false
-        this.CLICK = this.HASTOUCH ? "touchstart" : "click"
 
         // update all cached files if 'cache.manifest' changed on server 
         appCacheNanny.on('updateready', function () {
@@ -91,7 +91,7 @@ var woofr = {
     onClick: function(id,cb){
       el = document.querySelector(id)
       if( !el ) return console.error('objectid '+id+' does not exist')
-      el.addEventListener( this.CLICK, function(e){
+      el.addEventListener( woofr.CLICK, function(e){
         cb(e)
         if( woofr.HASTOUCH ){
           FastClick.attach(document.body);
