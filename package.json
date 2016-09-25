@@ -1,10 +1,23 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name":"woofr",
-  "description": "minimal mobile SPA+rest interface in vanillajs for cordova",
+  "description": "Lightweight js-library which easifies development of offline-capable tablet/mobile webapps + webcomponents + over-the-air updates #cordova #zepto #fastclick #polyfills",
   "main": "app.js",
   "dependencies": {
   },
+  "keywords":[
+    "mobile",
+    "tablet",
+    "over the air updates",
+    "cordova",
+    "zepto",
+    "webcomponents",
+    "fastclick",
+    "polyfills",
+    "mobile",
+    "offline",
+    "webapp"
+  ],
   "devDependencies": {
     "body-parser": "^1.15.2",
     "appcache-nanny": "^1.1.0",
