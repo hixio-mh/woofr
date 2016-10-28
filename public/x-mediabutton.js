@@ -22,21 +22,27 @@
 //
 //   <x-span-string placeholder="foo" type="text"/>
 
-var xFoo = function(){
+var xMediaButton = function(){
 
   this.createdCallback = function(){
   }
 
   this.attachedCallback = function(){
-    this.innerHTML = document.getElementById("x-foo").innerHTML
-    var span = this.span = $(this).find('span')[0]
-    var attributes = ["title", "placeholder", "name", "value", "type"]
+	var type = this.getAttribute("type")
+	if( !type ) throw 'data-type attribute not found in <mediabutton>'
+	if (! ('ontouchstart' in document.documentElement) )
+	  return false; // record audio mostly is supported on desktop pc browser's (not ios etc)
+    this.innerHTML = document.getElementById( "x-mediabutton-"+type ).innerHTML
+    var input = this.input = $(this).find('input')[0]
+	var attributes = []
     for ( var i in attributes  ) {
+	  if( i == "text" ) continue
       var attribute = attributes[i]
-      if( this.getAttribute( attribute ) ) span.setAttribute( attribute, this.getAttribute(attribute) )
+      if( this.getAttribute( attribute ) ) input.setAttribute( attribute, this.getAttribute(attribute) )
     }
-    span.setAttribute('id', this.getAttribute('data-id'))
-    span.innerHTML = this.getAttribute('data-value')
+    input.setAttribute('name', this.getAttribute('id'))
+    input.setAttribute('id', this.getAttribute('id'))
+	this.setAttribute( 'id', "_"+this.getAttribute('id') )
   }
 
   this.detachedCallback = function(){}
@@ -47,9 +53,7 @@ var xFoo = function(){
     } else if (value == null) {
       // removed
     } else {
-      this.data.span.setAttribute(name, value)
     }
   }  
 
 }
-

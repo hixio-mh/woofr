@@ -1,5 +1,5 @@
 {
-  "version": "1.0.5",
+  "version": "1.0.6",
   "name": "woofr",
   "description": "Lightweight js-library which easifies development of offline-capable tablet/mobile webapps + webcomponents + over-the-air updates #cordova #zepto #fastclick #polyfills",
   "main": "app.js",
@@ -30,6 +30,7 @@
     "document-register-element": "^1.1.1",
     "express": "^4.14.0",
     "fastclick": "^1.0.6",
+    "micro-material-css3": "git+https://coderofsalvation@github.com/coderofsalvation/micro-material-css3.git",
     "minify": "^2.0.11",
     "notie": "git+https://github.com/coderofsalvation/notie.git",
     "restglue": "^1.0.8"

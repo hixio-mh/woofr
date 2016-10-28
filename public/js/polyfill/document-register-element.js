@@ -1,1 +1,1 @@
-../../../node_modules/document-register-element/build/document-register-element.max.js
+../../../node_modules/micro-material-css3/js/document-register-element.js

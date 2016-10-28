@@ -1,40 +1,33 @@
 var bindEvents = function(){
-  // woofr.onClick binds touchstart or click based on desktop/touch device
+  // mmcss3.onClick binds touchstart or click based on desktop/touch device
   // (should be tappy.js?)
-  woofr.onClick( '#menu', function(e){
+  $('#header_menu').on('click', function(e){
     notie.select('Menu', ' <b class="icon">▼</a> ', [
       {
         title: 'Home',
         color: '#555555',
         handler: function () {
-          notie.alert(1, 'Share item!', 3)
+          mmcss3.showPage('#home')
         }
       },
       {
-        title: 'Page 1',
+        title: 'Media',
         color: '#444444',
         handler: function () {
-          notie.alert(1, 'Open item!', 3)
+          mmcss3.showPage('#media')
         }
       },
       {
-        title: 'Page 2',
-        color: '#333333',
-        handler: function () {
-          notie.alert(2, 'Edit item!', 3)
-        }
-      },
-      {
-        title: 'Page 3',
+        title: 'Calendar',
         color: '#222222',
         handler: function () {
-          notie.alert(3, 'Delete item!', 3)
+          mmcss3.showPage('#calendar') //notie.alert(3, 'Foo bar!', 3)
         }
       }
     ])
   })
 
-  woofr.onClick( '#input', function(e){
+  $('#input').on('click', function(e){
     notie.input({
       type: 'email',
       placeholder: 'name@example.com',
@@ -52,7 +45,7 @@ var bindEvents = function(){
     //})
   })
 
-  woofr.onClick( '#input', function(e){
+  $('#input').on('click', function(e){
     notie.input({
       type: 'email',
       placeholder: 'name@example.com',
@@ -70,24 +63,49 @@ var bindEvents = function(){
     //})
   })
 
-  woofr.onClick( '#rest', function(e){
-    woofr.api.addEndpoint("js/data.json")
-    woofr.api['js/data.json'].getAll()
+  $('#rest').on('click', function(e){
+    $.api.addEndpoint("js/data.json")
+    $.api['js/data.json'].getAll()
     .then( function(json){ 
       $('#foo').html( JSON.stringify(json) )
     })
   })
 
-  woofr.onClick( '#update', function(e){
+  $('#update').on('click', function(e){
     appCacheNanny.update()
   })
+
+  $('#button_media').on('click', function(e){
+    mmcss3.showPage('#media')
+  })
+
 }
 
 
+var onReady = function(){
+  bindEvents()
+  window.mmcss3 = new micromaterial()
+  window.mmcss3.registerElement("x-foo", new xFoo ) // registers dom element <x-foo> to browser
+  window.mmcss3.registerElement("x-mediabutton", new xMediaButton ) 
+  setTimeout( function(){ window.mmcss3.showPage('#home') }, 1000 )
+}
+
+var onUpdate = function(){
+  appCacheNanny.on('updateready', function () {
+    notie.confirm('Your app is outdated<br><br>update now?', 'Yes', 'No', function() {
+      notie.alert(1, 'please wait')
+      mmcss3.loading(true, function(){
+        setTimeout( function(){ 
+          $('.page').css({'display':'none'}) // hide all pages
+          document.location.reload(1)
+        },2000)
+      })
+    })
+  })
+}
+
 woofr.initialize({
-  updateInterval: 10000, // make this lower on productionserver
-  ready: function(){
-    bindEvents()
-    woofr.registerElement("x-foo", new elementFoo ) // registers dom element <x-foo> to browser
-  }
+  updateInterval: 1000, // make this higher on productionserver
+  onUpdate: onUpdate,   // update all cached files if 'cache.manifest' changed on server 
+  ready: onReady        // start app
 })
