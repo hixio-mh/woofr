@@ -1,5 +1,5 @@
 var bindEvents = function(){
-  // mmcss3.onClick binds touchstart or click based on desktop/touch device
+  // $.onClick binds touchstart or click based on desktop/touch device
   // (should be tappy.js?)
   $('#header_menu').on('click', function(e){
     notie.select('Menu', ' <b class="icon">▼</a> ', [
@@ -7,21 +7,21 @@ var bindEvents = function(){
         title: 'Home',
         color: '#555555',
         handler: function () {
-          mmcss3.showPage('#home')
+          $.showPage('#home')
         }
       },
       {
         title: 'Media',
         color: '#444444',
         handler: function () {
-          mmcss3.showPage('#media')
+          $.showPage('#media')
         }
       },
       {
         title: 'Calendar',
         color: '#222222',
         handler: function () {
-          mmcss3.showPage('#calendar') //notie.alert(3, 'Foo bar!', 3)
+          $.showPage('#calendar') //notie.alert(3, 'Foo bar!', 3)
         }
       }
     ])
@@ -37,7 +37,6 @@ var bindEvents = function(){
     }, function(valueEntered) {
       notie.alert(3, 'You cancelled with woofr value: ' + valueEntered, 2)
     })
-    FastClick.attach(document.body); // remove 300ms from all generated clickevents
     e.preventDefault(); // don't cascade into extra click-event
     //notie.confirm('Are you sure you want to do that?', 'Yes', 'Cancel', function() {
     //  notie.alert(1, 'Good choice!', 2, function(){
@@ -55,8 +54,6 @@ var bindEvents = function(){
     }, function(valueEntered) {
       notie.alert(3, 'You cancelled with woofr value: ' + valueEntered, 2)
     })
-    FastClick.attach(document.body); // remove 300ms from all generated clickevents
-    e.preventDefault(); // don't cascade into extra click-event
     //notie.confirm('Are you sure you want to do that?', 'Yes', 'Cancel', function() {
     //  notie.alert(1, 'Good choice!', 2, function(){
     //  })
@@ -76,7 +73,7 @@ var bindEvents = function(){
   })
 
   $('#button_media').on('click', function(e){
-    mmcss3.showPage('#media')
+    $.showPage('#media')
   })
 
 }
@@ -84,17 +81,16 @@ var bindEvents = function(){
 
 var onReady = function(){
   bindEvents()
-  window.mmcss3 = new micromaterial()
-  window.mmcss3.registerElement("x-foo", new xFoo ) // registers dom element <x-foo> to browser
-  window.mmcss3.registerElement("x-mediabutton", new xMediaButton ) 
-  setTimeout( function(){ window.mmcss3.showPage('#home') }, 1000 )
+  $.registerElement("x-foo", new xFoo ) // registers dom element <x-foo> to browser
+  $.registerElement("x-mediabutton", new xMediaButton ) 
+  setTimeout( function(){ $.showPage('#home') }, 1000 )
 }
 
 var onUpdate = function(){
   appCacheNanny.on('updateready', function () {
     notie.confirm('Your app is outdated<br><br>update now?', 'Yes', 'No', function() {
       notie.alert(1, 'please wait')
-      mmcss3.loading(true, function(){
+      $.loading(true, function(){
         setTimeout( function(){ 
           $('.page').css({'display':'none'}) // hide all pages
           document.location.reload(1)
