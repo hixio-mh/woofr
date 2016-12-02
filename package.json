@@ -1,5 +1,5 @@
 {
-  "version": "1.0.8",
+  "version": "1.0.9",
   "name": "woofr",
   "description": "Lightweight js-library which easifies development of offline-capable tablet/mobile webapps + webcomponents + over-the-air updates #cordova #zepto #fastclick #polyfills",
   "main": "app.js",

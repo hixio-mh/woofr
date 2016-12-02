@@ -573,7 +573,7 @@ var micromaterial = function(zepto_or_jquery){
 
   this.isLoading = false
   this.page = {
-    last: false, 
+    last: [], 
     current: false
   }
 
@@ -588,7 +588,7 @@ var micromaterial = function(zepto_or_jquery){
   }
 
   this.back = function(){
-    this.showPage( this.page.last )
+    this.showPage( this.page.last.pop(), false, true )
   }
 
   this.showHeader = function (state) {
@@ -614,9 +614,10 @@ var micromaterial = function(zepto_or_jquery){
     $('.hidemenu').removeClass('hidemenu')
   }
 
-  this.showPage = function(id,cb){
+  this.showPage = function(id,cb,no_history){
     var me = this;
-    this.page.last = this.page.current  // remember current page as last page
+    if( this.page.current != false && !no_history) 
+      this.page.last.push( this.page.current )  // remember current page as last page
     this.page.current = id        // remember current page
     this.loading(true, function(){
       $('.page').css({'display':'none'})
