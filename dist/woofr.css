@@ -243,6 +243,7 @@ button#header_menu {
 
 button#header_menu {
   padding-right:19px;
+  padding-top:16px;
 }
 
 button,label.file{
@@ -355,6 +356,12 @@ label > * {
 }
 .error .form-control {
   border-bottom: 2px solid red !important;
+}
+
+.noborder {
+  box-shadow:none !important;
+  -webkit-box-shadow:none !important;
+  border:none !important;
 }
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
@@ -480,7 +487,7 @@ template {
   padding:12px;
   background-color:#FFF;
   position:fixed;
-  height:57px;
+  height:49px;
   top:-87px;
   right:0px;
   left:0px;
@@ -540,7 +547,7 @@ div#loadscreen{
  */
 
 .showheader div#loadscreen {
-  top:87px;
+  top:66px;
 }
 .showheader #app div#header {
   margin-top:87px !important;
@@ -560,6 +567,13 @@ div#loadscreen{
 
 .clear {
   clear:both;
+}
+
+#header h2 {
+  display:inline;
+  font-size: 20px;
+  color: rgb(64, 128, 255);
+  line-height: 50px;
 }
 @-webkit-keyframes uil-ripple {
   0% {
