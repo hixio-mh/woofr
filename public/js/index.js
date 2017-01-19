@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var woofr = function(){
+var woofr = function($){
     this.touch = false
     this.opts = false
 
@@ -30,7 +30,6 @@ var woofr = function(){
       // monkey patch zepto/jquery clicks with hammertime for improved responsivess.
       $._on = $.on 
       $.on = (function(){
-        alert("ja!")
         if( argument[0] == 'click' && woofr.HASTOUCH )
           me.hammertime.on('tap', argument[1]) 
         else 
@@ -83,4 +82,4 @@ var woofr = function(){
     }
 };
 
-woofr = new woofr()
+woofr = new woofr($)

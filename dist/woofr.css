@@ -458,19 +458,19 @@ h2, .page {
 
 @keyframes fade {
     from { opacity: 1.0; }
-    50% { opacity: 0.6; }
+    50% { opacity: 0.2; }
     to { opacity: 1.0; }
 }
  
 @-webkit-keyframes fade {
     from { opacity: 1.0; }
-    50% { opacity: 0.6; }
+    50% { opacity: 0.2; }
     to { opacity: 1.0; }
 }
  
 .blink {
-    animation:fade 3000ms infinite;
-    -webkit-animation:fade 3000ms infinite;
+    animation:fade 2000ms infinite;
+    -webkit-animation:fade 2000ms infinite;
 }
 
 .pull-right {
@@ -505,6 +505,7 @@ template {
 .page {  
   min-height:100%;
   padding: 2% 3%;
+  box-sizing: border-box;
 }
 
 div#container{

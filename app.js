@@ -84,7 +84,10 @@ if (cluster.isMaster) {
 
   app.get('/cache.manifest', manifest([
       { file: 'public', url: '/', ignore: /.*swp$/ }
-    ])
+    ], {
+      cache: ["/"], 
+      fallback: ["/ /"] 
+    })
   )
 
   // middleware stack: try static files

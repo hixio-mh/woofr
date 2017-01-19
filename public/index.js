@@ -1,3 +1,5 @@
+new micromaterial($)
+
 var bindEvents = function(){
   // $.onClick binds touchstart or click based on desktop/touch device
   // (should be tappy.js?)
