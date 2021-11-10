@@ -31,7 +31,7 @@
     "express": "^4.14.0",
     "fastclick": "^1.0.6",
     "micro-material-css3": "git+https://coderofsalvation@github.com/coderofsalvation/micro-material-css3.git",
-    "minify": "^2.0.11",
+    "minify": "^4.1.2",
     "notie": "git+https://github.com/coderofsalvation/notie.git",
     "restglue": "^1.0.8"
   },
